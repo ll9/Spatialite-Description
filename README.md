@@ -10,3 +10,8 @@ SELECT InitSpatialMetaData();
 CREATE TABLE test_geom(name varchar(30));
 4. Füge Geometriespalte dazu (dazu benötigt es seperaten Schritt, nicht mit 3. kombinierbar)
 SELECT AddGeometryColumn('test_geom', 'geometry', 4326, 'POINT', 'XY');
+
+5. Füge Daten ein:
+insert into test_geom values('bla', GeomFromText('POINT(1.01 2.02)', 4326));
+6. Lies Daten aus:
+select *, asText(geometry) from test_geom;
