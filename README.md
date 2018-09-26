@@ -16,8 +16,7 @@ insert into test_geom values('bla', GeomFromText('POINT(1.01 2.02)', 4326));
 6. Lies Daten aus:
 select *, asText(geometry) from test_geom;
 
-## Not Working fix Polygon, Line etc.
 5b.
-insert into test_geom2 values('bla', GeomFromText('Polygon((1 1, 2 2, 3 3))', 4326));
+insert into test_geom2 values('bla23', GeomFromText('POLYGON ((30 10, 40 40, 20 40, 10 20, 30 10))', 4326));
 6b.
 select *, asText(geometry) from test_geom2;
