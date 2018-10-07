@@ -20,3 +20,14 @@ select *, asText(geometry) from test_geom;
 insert into test_geom2 values('bla23', GeomFromText('POLYGON ((30 10, 40 40, 20 40, 10 20, 30 10))', 4326));
 6b.
 select *, asText(geometry) from test_geom2;
+
+## Spalten löschen (ACHTUNG: Spatialite geometry constraints gehen verloren, dafür bleiben aber primary key und datentypen erhalten)
+
+1. Tabelle umbenennen
+ALTER TABLE LDS_FEATURES RENAME TO _LDS_FEATURES;
+
+2. Tabelle Klonen ('main' ist quasi die aktuelle Datenbank, 1 steht für eine atomaren Befehl, beim letzen Parameter wird die Spalte gelöscht)
+SELECT CloneTable('main', '_LDS_FEATURES', 'LDS_FEATURES', 1, '::ignore::Temp');
+
+3. Tabelle löschen
+DROP TABLE _LDS_FEATURES;
