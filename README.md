@@ -31,3 +31,6 @@ SELECT CloneTable('main', '_LDS_FEATURES', 'LDS_FEATURES', 1, '::ignore::Temp');
 
 3. Tabelle löschen
 DROP TABLE _LDS_FEATURES;
+
+## Geometrie entfernen
+SELECT DiscardGeometryColumn('test_geom', 'the_geom');
