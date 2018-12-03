@@ -34,3 +34,7 @@ DROP TABLE _LDS_FEATURES;
 
 ## Geometrie entfernen
 SELECT DiscardGeometryColumn('test_geom', 'the_geom');
+
+
+# Get Lon/Lat
+SELECT ST_X(geometry), ST_Y(geometry)     FROM lds_features;
